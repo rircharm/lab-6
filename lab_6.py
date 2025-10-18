@@ -41,5 +41,5 @@ for i in range(1, n+1):
         subject = input("Введіть назву предмета: ")
         grade = int(input("Введіть оцінку: "))
         students[key]["grades"][subject] = grade
-print("\nСловник студентів та їх оцінок:")
+print("\nСловник студентів та їх оцінок:" )
 print(students)
