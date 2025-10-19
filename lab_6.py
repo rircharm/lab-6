@@ -1,4 +1,6 @@
-﻿students = {
+﻿from sort import sort_by_name
+
+students = {
     "student1" : {
         "first_name" : "Viktor",
         "last_name" : "Afanasenko",
@@ -6,7 +8,7 @@
         "grades": {" Python" : 4 , "Numerical Methods" : 4 , "elective course" : 5}
         }  ,
     "student2" : {
-        "first_name" : "Romar",
+        "first_name" : "Roman", #fixed name
         "last_name" : "Fedorchenko",
         "course" :  2,
         "grades": {" Python" : 5 , "Numerical Methods" : 5, "elective course" : 3}
@@ -18,14 +20,14 @@
         "grades": {" Python" : 4 , "Numerical Methods" : 5 , "elective course" : 5}
         }
     }
+
 print(" students:")
 for key, value in  students.items():
     print(f"{key}: {value}")
      
 n = int(input("Скільки студентів ви хочете додати? "))
-
 for i in range(1, n+1):
-    key = f"student {i+3}"  
+    key = f"student{i+3}" #fixed space issue
     students[key] = {}     
     
     name = input(f"\nВведіть ім'я для {key}: ")
@@ -42,4 +44,14 @@ for i in range(1, n+1):
         grade = int(input("Введіть оцінку: "))
         students[key]["grades"][subject] = grade
 print("\nСловник студентів та їх оцінок:" )
-print(students)
+# print(students)
+
+#remake print 
+for key, value in students.items():
+    print(f"{key}: {value}")
+
+# print sorted dictionary
+print("\nSorted dictionary:")
+sorted_students = sort_by_name(students)
+for key, value in sorted_students.items():
+    print(f"{key}: {value}")
