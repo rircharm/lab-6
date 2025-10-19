@@ -1,57 +1,80 @@
-﻿from sort import sort_by_name
+﻿# Створення та управління словником студентів
+from sort import sort_by_name
 
 students = {
-    "student1" : {
-        "first_name" : "Viktor",
-        "last_name" : "Afanasenko",
-        "course" :  2,
-        "grades": {" Python" : 4 , "Numerical Methods" : 4 , "elective course" : 5}
-        }  ,
-    "student2" : {
-        "first_name" : "Roman", #fixed name
-        "last_name" : "Fedorchenko",
-        "course" :  2,
-        "grades": {" Python" : 5 , "Numerical Methods" : 5, "elective course" : 3}
-        },
-    "student3" : {
-        "first_name" : "Mariyana",
-        "last_name" : "Bobro",
-        "course" :  2,
-        "grades": {" Python" : 4 , "Numerical Methods" : 5 , "elective course" : 5}
-        }
+    "student1": {
+        "first_name": "Viktor",
+        "last_name": "Afanasenko",
+        "course": 2,
+        "grades": {"Python": 4, "Numerical Methods": 4, "elective course": 5}
+    },
+    "student2": {
+        "first_name": "Roman",  # коригування назви
+        "last_name": "Fedorchenko",
+        "course": 2,
+        "grades": {"Python": 5, "Numerical Methods": 5, "elective course": 3}
+    },
+    "student3": {
+        "first_name": "Mariyana",
+        "last_name": "Bobro",
+        "course": 2,
+        "grades": {"Python": 4, "Numerical Methods": 5, "elective course": 5}
     }
-
-print(" students:")
-for key, value in  students.items():
+}
+# Виведення початкового словника студентів
+print("Список студентів:")
+for key, value in students.items():
     print(f"{key}: {value}")
-     
+# Функція Афанасенка В.Ю.
+# Функція додавання нових студентів
 n = int(input("Скільки студентів ви хочете додати? "))
-for i in range(1, n+1):
-    key = f"student{i+3}" #fixed space issue
-    students[key] = {}     
-    
+for i in range(1, n + 1):
+    key = f"student{i + 3}"  # виправлено проблему з пробілом у ключі
+    students[key] = {}
+
     name = input(f"\nВведіть ім'я для {key}: ")
     students[key]["first_name"] = name
     last_name = input(f"\nВведіть прізвище для {key}: ")
     students[key]["last_name"] = last_name
-    course= input("\nВведіть курс студента : ")
-    students[key][" course"] =  course
-    students[key]["grades"] = {} 
-    
+    course = input("\nВведіть курс студента: ")
+    students[key]["course"] = course
+    students[key]["grades"] = {}
+
     m = int(input(f"Скільки предметів у {name}? "))
     for _ in range(m):
         subject = input("Введіть назву предмета: ")
         grade = int(input("Введіть оцінку: "))
         students[key]["grades"][subject] = grade
-print("\nСловник студентів та їх оцінок:" )
-# print(students)
 
-#remake print 
+print("\nСловник студентів та їх оцінок:")
 for key, value in students.items():
     print(f"{key}: {value}")
 
-# print sorted dictionary
-print("\nSorted dictionary:")
+# Виведення відсортованого словника
+print("\nВідсортований словник:")
 sorted_students = sort_by_name(students)
 for key, value in sorted_students.items():
     print(f"{key}: {value}")
+
+# Функція Бобро М.Г.
+# Функція для видалення студента зі словника
+def remove_student(students_dict):
+    print("\nСписок студентів:")
+    for key in students_dict.keys():
+        print(f" - {key}") # Виводимо всі ключі студентів
+    student_key = input("\nВведіть ключ студента, якого потрібно видалити (наприклад, student2): ")
+
+    if student_key in students_dict: # Перевірка чи існує такий студент
+        del students_dict[student_key] # Видаляємо студента зі словника
+        print(f"Студента '{student_key}' успішно видалено.")
+    else:
+        print(f"Студента з ключем '{student_key}' не знайдено.")
+
+remove_student(students)
+
+#Виводимо оновлений словник студентів
+print("\nОновлений список студентів:")
+for key, value in students.items():
+    print(f"{key}: {value}")
+
+
