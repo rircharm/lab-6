@@ -22,13 +22,15 @@ students = {
     }
 }
 # Виведення початкового словника студентів
-print("Список студентів:")
-for key, value in students.items():
+def show() : 
+ print("\nСловник студентів та їх оцінок:")
+ for key, value in students.items():
     print(f"{key}: {value}")
 # Функція Афанасенка В.Ю.
 # Функція додавання нових студентів
-n = int(input("Скільки студентів ви хочете додати? "))
-for i in range(1, n + 1):
+def add ():
+ n = int(input("Скільки студентів ви хочете додати? "))
+ for i in range(1, n + 1):
     key = f"student{i + 3}"  # виправлено проблему з пробілом у ключі
     students[key] = {}
 
@@ -45,20 +47,22 @@ for i in range(1, n + 1):
         subject = input("Введіть назву предмета: ")
         grade = int(input("Введіть оцінку: "))
         students[key]["grades"][subject] = grade
-
-print("\nСловник студентів та їх оцінок:")
-for key, value in students.items():
+        print("\nСловник студентів та їх оцінок:")
+ for key, value in students.items():
     print(f"{key}: {value}")
 
+
+
+def sortt():
 # Виведення відсортованого словника
-print("\nВідсортований словник:")
-sorted_students = sort_by_name(students)
-for key, value in sorted_students.items():
+ print("\nВідсортований словник:")
+ sorted_students = sort_by_name(students)
+ for key, value in sorted_students.items():
     print(f"{key}: {value}")
-
-# Функція Бобро М.Г.
-# Функція для видалення студента зі словника
-def remove_student(students_dict):
+def delete ():
+ # Функція Бобро М.Г.
+ # Функція для видалення студента зі словника
+ def remove_student(students_dict):
     print("\nСписок студентів:")
     for key in students_dict.keys():
         print(f" - {key}") # Виводимо всі ключі студентів
@@ -70,11 +74,22 @@ def remove_student(students_dict):
     else:
         print(f"Студента з ключем '{student_key}' не знайдено.")
 
-remove_student(students)
+ remove_student(students)
 
-#Виводимо оновлений словник студентів
-print("\nОновлений список студентів:")
-for key, value in students.items():
+ #Виводимо оновлений словник студентів
+ print("\nОновлений список студентів:")
+ for key, value in students.items():
     print(f"{key}: {value}")
-
+while True :
+ x=int(input("1  Вивести словник  \n2 Додати елемент у словник  \n3  Видалити елемент зі словника  \n 4   Відсортувати словник  \n 5  Закрити програму  \n Виберіть дію (1-5):"))
+ if x == 1 :
+  show()
+ elif x==2:
+   add()
+ elif x==3:
+  delete ()
+ elif x==4:
+   sortt()
+ elif x==5:
+  break
 
